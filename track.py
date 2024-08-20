@@ -43,19 +43,16 @@ def track():
     # {legal_description}
     # """
 
-    prompt = f"""
-Please convert the following legal description into a simplified format of deed calls, specifying directions and distances. 
-Ensure that no words or lines from the legal description are skipped, and strictly adhere to the following format:
-
-Format:
-S89.12E 683.22f
-S89.12W 289.76f
-S89.12W 324.33f
-...
-
-Legal Description:
-{legal_description}
-"""
+  prompt = f"""
+    Please convert the following legal description into a simplified format of deed calls (directions and distances). 
+    The exact format should be strictly like this:
+    S89.12E 683.22f
+    S89.12W 289.76f 
+    S89.12W 324.33f
+    ...
+    Legal Description:
+    {legal_description}
+    """
 
     # Make the request to the Claude API using a different model, like claude-2
     response = requests.post(
