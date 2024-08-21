@@ -31,22 +31,33 @@ def track():
     if not legal_description:
         return jsonify({"error": "No legal description provided"}), 400
 
+    # prompt = f"""
+    # Please convert the following legal description into a simplified format of deed calls (directions and distances). 
+
+    # **Important:** The exact format must be strictly followed. Each deed call should be presented on a new line with no additional text or explanation. The format is as follows:
+
+    # DirectionDistance Space Distance followed by "f"
+    # Each deed call should end with a single newline (\\n).
+    # Example:
+    # S89.12E 683.22f\n
+    # S89.12W 289.76f\n
+    # S89.12W 324.33f\n
+
+    # Legal Description:
+    # {legal_description}
+
+    # Please ensure the output matches this format exactly.
+    # """
     prompt = f"""
-    Please convert the following legal description into a simplified format of deed calls (directions and distances). 
-
-    **Important:** The exact format must be strictly followed. Each deed call should be presented on a new line with no additional text or explanation. The format is as follows:
-
-    DirectionDistance Space Distance followed by "f"
-    Each deed call should end with a single newline (\\n).
-    Example:
-    S89.12E 683.22f\n
-    S89.12W 289.76f\n
-    S89.12W 324.33f\n
-
+    Please convert the following legal description into a simplified format of deed calls, strictly in compass directions and distances.
+    The output should only contain lines in the format of compass direction and distance, like this:
+    S89.12E 683.22f
+    S89.12W 289.76f
+    S89.12W 324.33f
+    Avoid using any words such as "arc," "circumference," "along," or "radius" in the output.
+    Only return directions (like N, S, E, W) and distances (in feet). If there's a curve, simply give the straight-line equivalent direction and distance.
     Legal Description:
     {legal_description}
-
-    Please ensure the output matches this format exactly.
     """
 
 #     prompt = f"""
