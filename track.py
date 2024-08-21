@@ -47,7 +47,7 @@ def track():
 Please convert the following legal description into a simplified format of deed calls, specifying directions and distances. 
 Ensure that no words or lines from the legal description are skipped, and strictly adhere to the following format:
 
-Format:
+The exact format should be strictly like this:
 S89.12E 683.22f
 S89.12W 289.76f
 S89.12W 324.33f
