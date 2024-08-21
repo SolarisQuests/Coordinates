@@ -31,15 +31,21 @@ def track():
     if not legal_description:
         return jsonify({"error": "No legal description provided"}), 400
 
-    prompt = f"""
-    Please convert the following legal description into a simplified format of deed calls (directions and distances). 
-    The exact format should be strictly like this:
-    S89.12E 683.22f
-    S89.12W 289.76f 
-    S89.12W 324.33f
-    ...
+    prompt = Please convert the following legal description into a simplified format of deed calls (directions and distances). 
+
+    **Important:** The exact format must be strictly followed. Each deed call should be presented on a new line with no additional text or explanation. The format is as follows:
+
+    DirectionDistance Space Distance followed by "f"
+    Each deed call should end with a single newline (\\n).
+    Example:
+    S89.12E 683.22f\n
+    S89.12W 289.76f\n
+    S89.12W 324.33f\n
+
     Legal Description:
     {legal_description}
+
+    Please ensure the output matches this format exactly.
     """
 
 #     prompt = f"""
